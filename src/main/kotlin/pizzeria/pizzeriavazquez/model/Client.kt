@@ -1,9 +1,11 @@
 package pizzeria.pizzeriavazquez.model
 
+import org.springframework.data.mongodb.core.mapping.Document
 import java.time.LocalDateTime
 import javax.persistence.Id
 
-class Client{
+@Document(collection = "Clients")
+class Client {
     @Id
     var id:String="";
     var name:String="";

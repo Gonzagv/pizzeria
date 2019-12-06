@@ -1,26 +1,33 @@
 package pizzeria.pizzeriavazquez.model
 
-open class Product{
-    var name:String="";
-    var precio=0;
-    var description:String="";
+import org.springframework.data.mongodb.core.mapping.Document
+import javax.persistence.Id
 
-    constructor(name: String, precio: Int, description: String) {
-        this.name = name
-        this.precio = precio
-        this.description = description
-    }
+@Document(collection = "products")
+open class Product {
+    @Id
+    var id:String=""
+    var name:String=""
+    var precio=0
+    var description:String=""
+    var typeOfProduct:TypeOfProduct= TypeOfProduct.DEFAULT
 
-    constructor();
 }
 
 class Pizza():Product(){
-    var size:String="";
+    var size:String=""
 }
 
 class Empanada():Product(){
-    var cookingType:String="";
+    var cookingType:String=""
 }
 
 class Bebida():Product(){
+}
+
+enum class TypeOfProduct(text:String){
+    BEBIDA("bebida"),
+    PIZZA("pizza"),
+    EMPANADA("empanada"),
+    DEFAULT("default")
 }

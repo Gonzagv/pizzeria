@@ -1,9 +1,11 @@
 package pizzeria.pizzeriavazquez.model
 
+import org.springframework.data.mongodb.core.mapping.Document
 import java.time.LocalDateTime
 import javax.persistence.Id
 
-class Order{
+@Document(collection = "Orders")
+class Order {
     @Id
     var id:String="";
     var productosSolicitados=Array(2){
